@@ -1,2 +1,3 @@
-# dbms-project
-Y3S2 DBMS Project
+# DBMS Project
+
+Y3S2 Database Management Systems Project.
