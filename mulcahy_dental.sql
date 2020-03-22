@@ -5,38 +5,6 @@ USE `mulcahy_dental`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `appointments`
---
-
-DROP TABLE IF EXISTS `appointments`;
-CREATE TABLE IF NOT EXISTS `appointments` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `patient_id` int(10) NOT NULL,
-  `date` datetime NOT NULL,
-  `booking_method` enum('online','post','phone','drop-in') NOT NULL,
-  `cancelled` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `bill`
---
-
-DROP TABLE IF EXISTS `bill`;
-CREATE TABLE IF NOT EXISTS `bill` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `date_issued` date NOT NULL,
-  `amount_due` float NOT NULL,
-  `appointment_id` int(10) NOT NULL,
-  `type` set('Appointment', 'Late Cancellation Fee'),
-  PRIMARY KEY(`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `patient`
 --
 
@@ -55,15 +23,50 @@ CREATE TABLE IF NOT EXISTS `patient` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `appointment`
+--
+
+DROP TABLE IF EXISTS `appointment`;
+CREATE TABLE IF NOT EXISTS `appointment` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `patient_id` int(10) UNSIGNED NOT NULL,
+  `date` datetime NOT NULL,
+  `booking_method` enum('online','post','phone','drop-in') NOT NULL,
+  `cancelled` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  CONSTRAINT FOREIGN KEY(`patient_id`) REFERENCES `patient`(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bill`
+--
+
+DROP TABLE IF EXISTS `bill`;
+CREATE TABLE IF NOT EXISTS `bill` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `date_issued` date NOT NULL,
+  `amount_due` float NOT NULL,
+  `appointment_id` int(10) UNSIGNED NOT NULL,
+  `type` set('Appointment', 'Late Cancellation Fee'),
+  PRIMARY KEY(`id`),
+  CONSTRAINT FOREIGN KEY(`appointment_id`) REFERENCES `appointment`(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `payment`
 --
 
 DROP TABLE IF EXISTS `payment`;
 CREATE TABLE IF NOT EXISTS `payment` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `bill_id` int(10) NOT NULL,
+  `bill_id` int(10) UNSIGNED NOT NULL,
   `payment_method` enum('cash','card','cheque') NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  CONSTRAINT FOREIGN KEY(`bill_id`) REFERENCES `bill`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -91,12 +94,15 @@ CREATE TABLE IF NOT EXISTS `specialist` (
 DROP TABLE IF EXISTS `treatment`;
 CREATE TABLE IF NOT EXISTS `treatment` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `appointment_id` int(10) NOT NULL,
+  `appointment_id` int(10) UNSIGNED NOT NULL,
   `appointment_card` longblob NOT NULL,
   `appointment_card_path` varchar(50) NOT NULL,
   `image` longblob DEFAULT NULL,
   `image_path` varchar(50) DEFAULT NULL,
-  `follow_up` int(10) DEFAULT NULL,
-  `referral` int(10) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `follow_up` int(10) UNSIGNED DEFAULT NULL,
+  `referral` int(10) UNSIGNED DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT FOREIGN KEY(`appointment_id`) REFERENCES `appointment`(`id`),
+  CONSTRAINT FOREIGN KEY(`follow_up`) REFERENCES `appointment`(`id`),
+  CONSTRAINT FOREIGN KEY(`referral`) REFERENCES `specialist`(`id`)
 ) COLLATE utf8mb4_general_ci, ENGINE=InnoDB;
