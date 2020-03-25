@@ -16,26 +16,27 @@ CREATE TABLE IF NOT EXISTS `patient` (
   `phone_no` varchar(20) NOT NULL UNIQUE,
   `email` varchar(50) NOT NULL UNIQUE,
   `amount_owed` decimal(10,2) NOT NULL DEFAULT 0,
+  `last_update` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 INSERT INTO `patient` VALUES 
-(1, 'John Smith', '1986-09-13', '(087) 7763497', 'jsmith@gmail.com', '150.00'),
-(2, 'Conor Mahoney', '1973-03-06', '(086) 2060791', 'cmahoney@outlook.com', '70.50'),
-(3, 'Michael McDonnell', '1980-03-18', '(085) 8127963', 'mmcdonnell@gmail.com', '0.00'),
-(4, 'Brendan Shannon', '1970-03-02', '(083) 2055117', 'bshannon@gmail.com', '50.00'),
-(5, 'Ellen Malone', '1991-05-12', '(087) 5872036', 'emalone@gmail.com', '0.00'),
-(6, 'Carmel Flanagan', '1987-10-22', '(087) 5904954', 'cflanagan@ymail.com', '0.00'),
-(7, 'Maureen Gallagher', '1983-04-05', '(086) 6041827', 'mgallagher@gmail.com', '130.00'),
-(8, 'Kieran McEvoy', '1995-02-07', '(083) 1608656', 'kmcevoy@outlook.com', '0.00'),
-(9, 'Jacinta Quinlan', '1973-06-23', '(085) 1843925', 'jquinlan@gmail.com', '300.00'),
-(10, 'Rory McMillan', '1988-06-12', '(087) 7826427', 'rmcmillan@outlook.com', '0.00'),
-(11, 'Michael Curren', '1981-10-27', '(085) 9471427', 'mcurran@gmail.com', '0.00'),
-(12, 'Dervla Brennan', '1962-04-30', '(087) 9048926', 'dbrennan@gmail.com', '75.00'),
-(13, 'Margaret Joyce', '1991-03-22', '(087) 2352674', 'mjoyce@gmail.com', '50.00'),
-(14, 'Dermot Shannon', '1994-09-19', '(083) 1974682', 'dshannon@outlook.com', '0.00'),
-(15, 'Patricia Callaghan', '1978-06-22', '(086) 8739053', 'pcallaghan@gmail.com', '20.75');
+(1, 'John Smith', '1986-09-13', '(087) 7763497', 'jsmith@gmail.com', '150.00', NOW()),
+(2, 'Conor Mahoney', '1973-03-06', '(086) 2060791', 'cmahoney@outlook.com', '70.50', NOW()),
+(3, 'Michael McDonnell', '1980-03-18', '(085) 8127963', 'mmcdonnell@gmail.com', '0.00', NOW()),
+(4, 'Brendan Shannon', '1970-03-02', '(083) 2055117', 'bshannon@gmail.com', '50.00', NOW()),
+(5, 'Ellen Malone', '1991-05-12', '(087) 5872036', 'emalone@gmail.com', '0.00', NOW()),
+(6, 'Carmel Flanagan', '1987-10-22', '(087) 5904954', 'cflanagan@ymail.com', '0.00', NOW()),
+(7, 'Maureen Gallagher', '1983-04-05', '(086) 6041827', 'mgallagher@gmail.com', '130.00', NOW()),
+(8, 'Kieran McEvoy', '1995-02-07', '(083) 1608656', 'kmcevoy@outlook.com', '0.00', NOW()),
+(9, 'Jacinta Quinlan', '1973-06-23', '(085) 1843925', 'jquinlan@gmail.com', '300.00', NOW()),
+(10, 'Rory McMillan', '1988-06-12', '(087) 7826427', 'rmcmillan@outlook.com', '0.00', NOW()),
+(11, 'Michael Curren', '1981-10-27', '(085) 9471427', 'mcurran@gmail.com', '0.00', NOW()),
+(12, 'Dervla Brennan', '1962-04-30', '(087) 9048926', 'dbrennan@gmail.com', '75.00', NOW()),
+(13, 'Margaret Joyce', '1991-03-22', '(087) 2352674', 'mjoyce@gmail.com', '50.00', NOW()),
+(14, 'Dermot Shannon', '1994-09-19', '(083) 1974682', 'dshannon@outlook.com', '0.00', NOW()),
+(15, 'Patricia Callaghan', '1978-06-22', '(086) 8739053', 'pcallaghan@gmail.com', '20.75', NOW());
 
 
 -- --------------------------------------------------------
@@ -73,7 +74,7 @@ INSERT INTO `appointment` VALUES
 (14, 2, '2020-04-18 17:00:00', 'phone', '0'),
 (15, 1, '2020-04-21 10:00:00', 'phone', '0'),
 (16, 1, '2020-05-04 10:00:00', 'follow-up', '0'),
-(17, 1, '2020-05-04 11:00:00', 'follow-up', '0'),
+(17, 1, '2020-05-04 11:00:00', 'follow-up', '0');
 
 
 -- --------------------------------------------------------
@@ -103,7 +104,7 @@ INSERT INTO `bill` VALUES
 (6, '2020-03-23', 75, 6, 'Appointment'),
 (7, '2020-03-23', 100, 7, 'Appointment'),
 (8, '2020-03-23', 200, 8, 'Appointment'),
-(9, '2020-03-23', 75, 9, 'Appointment')
+(9, '2020-03-23', 75, 9, 'Appointment'),
 (10, '2020-03-23', 100, 10, 'Appointment');
 
 
@@ -129,11 +130,11 @@ INSERT INTO `payment` VALUES
 (3, 3, 'card'),
 (4, 4, 'cheque'),
 (5, 5, 'card'),
-(6, 6, 'cheque')
+(6, 6, 'cheque'),
 (7, 7, 'card'),
-(8, 8, 'cheque')
+(8, 8, 'cheque'),
 (9, 9, 'card'),
-(10, 10, 'cheque')
+(10, 10, 'cheque');
 
 
 -- --------------------------------------------------------
@@ -168,8 +169,8 @@ DROP TABLE IF EXISTS `treatment`;
 CREATE TABLE IF NOT EXISTS `treatment` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `appointment_id` int(10) UNSIGNED NOT NULL,
-  `appointment_card` longblob NOT NULL,
-  `appointment_card_path` varchar(50) NOT NULL,
+  -- `appointment_card` longblob NOT NULL,
+  -- `appointment_card_path` varchar(50) NOT NULL,
   `image` longblob DEFAULT NULL,
   `image_path` varchar(50) DEFAULT NULL,
   `follow_up` int(10) UNSIGNED DEFAULT NULL,
@@ -182,13 +183,13 @@ CREATE TABLE IF NOT EXISTS `treatment` (
 
 
 INSERT INTO `treatment` VALUES
-(1, 1, load_file('c:/appointments/app_1/card.pdf'), '/app_1/card.pdf', load_file('c:/appointments/app_1/image.jpg'), '/app_1/image.jpg', NULL, NULL),
-(2, 2, load_file('c:/appointments/app_2/card.pdf'), '/app_2/card.pdf', load_file('c:/appointments/app_2/image.jpg'), '/app_2/image.jpg', NULL, 1);
-(3, 3, load_file('c:/appointments/app_3/card.pdf'), '/app_3/card.pdf', load_file('c:/appointments/app_3/image.jpg'), '/app_3/image.jpg', NULL, NULL),
-(4, 4, load_file('c:/appointments/app_4/card.pdf'), '/app_4/card.pdf', load_file('c:/appointments/app_4/image.jpg'), '/app_4/image.jpg', NULL, 2);
-(5, 5, load_file('c:/appointments/app_5/card.pdf'), '/app_5/card.pdf', NULL, NULL, NULL, NULL),
-(6, 6, load_file('c:/appointments/app_6/card.pdf'), '/app_6/card.pdf', NULL, NULL, NULL, 1);
-(7, 7, load_file('c:/appointments/app_7/card.pdf'), '/app_7/card.pdf', NULL, NULL, NULL, NULL),
-(8, 8, load_file('c:/appointments/app_8/card.pdf'), '/app_8/card.pdf', NULL, NULL, NULL, 2);
-(9, 9, load_file('c:/appointments/app_9/card.pdf'), '/app_9/card.pdf', load_file('c:/appointments/app_9/image.jpg'), '/app_9/image.jpg', 16, NULL),
-(10, 10, load_file('c:/appointments/app_10/card.pdf'), '/app_10/card.pdf', load_file('c:/appointments/app_10/image.jpg'), '/app_10/image.jpg', 17, NULL);
+(1, 1, load_file('c:/appointments/app_1/image.jpg'), '/app_1/image.jpg', NULL, NULL),
+(2, 2, load_file('c:/appointments/app_2/image.jpg'), '/app_2/image.jpg', NULL, 1),
+(3, 3, load_file('c:/appointments/app_3/image.jpg'), '/app_3/image.jpg', NULL, NULL),
+(4, 4, load_file('c:/appointments/app_4/image.jpg'), '/app_4/image.jpg', NULL, 2),
+(5, 5, load_file('c:/appointments/app_5/image.jpg'), '/app_5/image.jpg', NULL, NULL),
+(6, 6, load_file('c:/appointments/app_6/image.jpg'), '/app_6/image.jpg', NULL, 1),
+(7, 7, load_file('c:/appointments/app_7/image.jpg'), '/app_7/image.jpg', NULL, NULL),
+(8, 8, load_file('c:/appointments/app_8/image.jpg'), '/app_8/image.jpg', NULL, 2),
+(9, 9, load_file('c:/appointments/app_9/image.jpg'), '/app_9/image.jpg', 16, NULL),
+(10, 10, load_file('c:/appointments/app_10/image.jpg'), '/app_10/image.jpg', 17, NULL);
