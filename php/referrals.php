@@ -25,7 +25,7 @@
 				$password = "";
 				$database = "mulcahy_dental";
 				
-				$query = "SELECT * FROM patients";
+				$query = "SELECT * FROM appointment JOIN treatment USING(appointment_id)";
                 
                 //Connect to the database
 				$connect = mysqli_connect($host, $user, $password, $database) or die("Problem connecting.");
