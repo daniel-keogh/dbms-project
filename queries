@@ -1,1 +1,0 @@
-SELECT * FROM patient p JOIN appointment a ON p.id = a.patient_id WHERE date BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL 7 DAY);
