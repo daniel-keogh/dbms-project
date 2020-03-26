@@ -8,14 +8,17 @@
 		<title>Patient Referrals</title>
 	</head>	
 	<body>
+		<h3>Patient Referrals</h3>
+		<br/>
+
 		<table border="1">		
 			<tr>
-				<td><h2>name</h2></td>
-				<td><h2>appointment_date</h2></td>
-				<td><h2>specialist_name</h2></td>
-				<td><h2>specialty</h2></td>
-				<td><h2>xray</h2></td>
-                <td><h2>xray_path</h2></td>
+				<td><h3>patient_name</h3></td>
+				<td><h3>appointment_date</h3></td>
+				<td><h3>specialist_name</h3></td>
+				<td><h3>specialty</h3></td>
+				<td><h3>xray</h3></td>
+                <td><h3>xray_path</h3></td>
 			</tr>
 			<?php			
 				$host = "localhost";
@@ -23,7 +26,7 @@
 				$password = "";
 				$database = "mulcahy_dental";
 				
-                $query = "SELECT p.name, a.date AS appointment_date, s.name specialist_name, s.specialty, t.xray, t.xray_path, t.treatment_id
+                $query = "SELECT p.name patient_name, a.date AS appointment_date, s.name specialist_name, s.specialty, t.xray, t.xray_path, t.treatment_id
                     FROM appointment a 
                     JOIN patient p USING(patient_id) 
                     JOIN treatment t USING(appointment_id) 
@@ -43,12 +46,12 @@
 				while($row = $result->fetch_array())
 				{
 					echo "<tr>";
-					echo "<td><h2>" .$row['name'] . "</h2></td>";
-					echo "<td><h2>" .$row['appointment_date'] . "</h2></td>";
-					echo "<td><h2>" .$row['specialist_name'] . "</h2></td>";
-					echo "<td><h2>" .$row['specialty'] . "</h2></td>";
-					echo "<td><h2><img src=image_blobs.php?treatment_id=".$row['treatment_id']." width=200 height=150/></h2></td>";
-					echo "<td><h2><img src=http://".$host.$row['xray_path'] . " width=200 height=150/></h2></td>";
+					echo "<td><h3>" .$row['patient_name'] . "</h3></td>";
+					echo "<td><h3>" .$row['appointment_date'] . "</h3></td>";
+					echo "<td><h3>" .$row['specialist_name'] . "</h3></td>";
+					echo "<td><h3>" .$row['specialty'] . "</h3></td>";
+					echo "<td><h3><img src=image_blobs.php?treatment_id=".$row['treatment_id']." width=200 height=150/></h3></td>";
+					echo "<td><h3><img src=http://".$host.$row['xray_path'] . " width=200 height=150/></h3></td>";
 				    echo "</tr>";
 				}
 			?>

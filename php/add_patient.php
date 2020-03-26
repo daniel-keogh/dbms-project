@@ -10,6 +10,7 @@
 	<body>
         <h3>Add a Patient</h3>
         <br/>
+
         <form action="" method="POST">
             <label>Name</label>
             <input required type="text" name="name" />
@@ -44,12 +45,15 @@
                 $phone = $_POST['phone'];
                 $email = $_POST['email'];
     
-                $query = "INSERT INTO patient (name, dob, phone_no, email) VALUES ('$name', '$dob', '$phone', '$email')";
+                $query = "INSERT INTO patient (name, dob, phone_no, email) 
+                    VALUES ('$name', '$dob', '$phone', '$email')";
     
                 mysqli_query($connect, $query) or die (mysqli_error($connect)); 
 
                 echo "Form submitted.";
                 mysqli_close($connect);
+
+                header('Location: ./patients.php');
             }
         ?>
     </body>

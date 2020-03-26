@@ -8,13 +8,16 @@
 		<title>Patients Table</title>
 	</head>	
 	<body>
+		<h3>Patients</h3>
+		<br/>
+
 		<table border="1">		
 			<tr>
-				<td><h2>id</h2></td>
-				<td><h2>name</h2></td>
-				<td><h2>dob</h2></td>
-				<td><h2>phone_no</h2></td>
-				<td><h2>email</h2></td>
+				<td><h3>id</h3></td>
+				<td><h3>name</h3></td>
+				<td><h3>dob</h3></td>
+				<td><h3>phone_no</h3></td>
+				<td><h3>email</h3></td>
 			</tr>
 			<?php			
 				$host = "localhost";
@@ -38,11 +41,11 @@
 				while($row = $result->fetch_array())
 				{		
 					echo "<tr>";
-					echo "<td><h2>" .$row['patient_id'] . "</h2></td>";
-					echo "<td><h2>" .$row['name'] . "</h2></td>";
-					echo "<td><h2>" .$row['dob'] . "</h2></td>";
-					echo "<td><h2>" .$row['phone_no'] . "</h2></td>";
-					echo "<td><h2>" .$row['email'] . "</h2></td>";
+					echo "<td><h3>" .$row['patient_id'] . "</h3></td>";
+					echo "<td><h3>" .$row['name'] . "</h3></td>";
+					echo "<td><h3>" .$row['dob'] . "</h3></td>";
+					echo "<td><h3>" .$row['phone_no'] . "</h3></td>";
+					echo "<td><h3>" .$row['email'] . "</h3></td>";
 				    echo "</tr>";
 				}
 			?>
