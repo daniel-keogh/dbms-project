@@ -189,12 +189,12 @@ CREATE TABLE IF NOT EXISTS `treatment` (
 
 
 INSERT INTO `treatment` VALUES
-(1, 1, load_file('c:/appointments/app_1/xray.jpg'), '/app_1/xray.jpg', 1),
-(2, 2, load_file('c:/appointments/app_2/xray.jpg'), '/app_2/xray.jpg', NULL),
-(3, 3, load_file('c:/appointments/app_3/xray.jpg'), '/app_3/xray.jpg', 2),
-(4, 4, load_file('c:/appointments/app_4/xray.jpg'), '/app_4/xray.jpg', NULL),
-(5, 5, load_file('c:/appointments/app_5/xray.jpg'), '/app_5/xray.jpg', 1),
-(6, 6, load_file('c:/appointments/app_6/xray.jpg'), '/app_6/xray.jpg', NULL),
-(7, 7, load_file('c:/appointments/app_7/xray.jpg'), '/app_7/xray.jpg', 2),
-(8, 8, load_file('c:/appointments/app_8/xray.jpg'), '/app_8/xray.jpg', NULL),
-(9, 9, load_file('c:/appointments/app_9/xray.jpg'), '/app_9/xray.jpg', NULL);
+(1, 1, load_file('c:/appointments/app_1/xray.jpg'), '/images/app_1/xray.jpg', 1),
+(2, 2, load_file('c:/appointments/app_2/xray.jpg'), '/images/app_2/xray.jpg', NULL),
+(3, 3, load_file('c:/appointments/app_3/xray.jpg'), '/images/app_3/xray.jpg', 2),
+(4, 4, load_file('c:/appointments/app_4/xray.jpg'), '/images/app_4/xray.jpg', NULL),
+(5, 5, load_file('c:/appointments/app_5/xray.jpg'), '/images/app_5/xray.jpg', 1),
+(6, 6, load_file('c:/appointments/app_6/xray.jpg'), '/images/app_6/xray.jpg', NULL),
+(7, 7, load_file('c:/appointments/app_7/xray.jpg'), '/images/app_7/xray.jpg', 2),
+(8, 8, load_file('c:/appointments/app_8/xray.jpg'), '/images/app_8/xray.jpg', NULL),
+(9, 9, load_file('c:/appointments/app_9/xray.jpg'), '/images/app_9/xray.jpg', NULL);
