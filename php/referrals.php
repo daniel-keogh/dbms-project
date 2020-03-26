@@ -23,7 +23,7 @@
 				$password = "";
 				$database = "mulcahy_dental";
 				
-                $query = "SELECT p.name, a.date AS appointment_date, s.name specialist_name, s.specialty, t.xray, t.xray_path 
+                $query = "SELECT p.name, a.date AS appointment_date, s.name specialist_name, s.specialty, t.xray, t.xray_path, t.treatment_id
                     FROM appointment a 
                     JOIN patient p USING(patient_id) 
                     JOIN treatment t USING(appointment_id) 
@@ -47,8 +47,8 @@
 					echo "<td><h2>" .$row['appointment_date'] . "</h2></td>";
 					echo "<td><h2>" .$row['specialist_name'] . "</h2></td>";
 					echo "<td><h2>" .$row['specialty'] . "</h2></td>";
-                    echo "<td><h2>" .$row['xray'] . "</h2></td>";
-                    echo "<td><h2>" .$row['xray_path'] . "</h2></td>";
+					echo "<td><h2><img src=image_blobs.php?treatment_id=".$row['treatment_id']." width=200 height=150/></h2></td>";
+					echo "<td><h2><img src=http://".$host.$row['xray_path'] . " width=200 height=150/></h2></td>";
 				    echo "</tr>";
 				}
 			?>
