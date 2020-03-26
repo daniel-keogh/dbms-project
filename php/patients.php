@@ -1,6 +1,6 @@
 <?php
-//Send utf-8 header before any output
-header('Content-Type: text/html; charset=utf-8'); 
+	//Send utf-8 header before any output
+	header('Content-Type: text/html; charset=utf-8'); 
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,7 +23,7 @@ header('Content-Type: text/html; charset=utf-8');
 				$host = "locahost";
 				$user = "root";
 				$password = "";
-				$database = "mulcahy_dental";				
+				$database = "mulcahy_dental";
 				
 				$query = "SELECT * FROM patients";
                 
@@ -31,10 +31,10 @@ header('Content-Type: text/html; charset=utf-8');
 				$connect = mysqli_connect($host, $user, $password, $database) or die("Problem connecting.");
                 
                 //Set connection to UTF-8
-				mysqli_query($connect,"SET NAMES utf8");
+				mysqli_query($connect, "SET NAMES utf8");
                 
                 //Select data
-				$result = mysqli_query($connect,$query) or die("Bad Query.");
+				$result = mysqli_query($connect, $query) or die("Bad Query.");
                 
                 mysqli_close($connect);
 
