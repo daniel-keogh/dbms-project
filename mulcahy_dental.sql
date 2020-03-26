@@ -156,7 +156,7 @@ DROP TABLE IF EXISTS `specialist`;
 CREATE TABLE IF NOT EXISTS `specialist` (
   `specialist_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `address` varchar(100) NOT NULL UNIQUE,
+  `address` varchar(255) NOT NULL,
   `phone_no` varchar(20) NOT NULL UNIQUE,
   `email` varchar(100) NOT NULL UNIQUE,
   `specialty` varchar(50) DEFAULT NULL,

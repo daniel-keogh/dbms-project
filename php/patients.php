@@ -24,15 +24,15 @@
 				$user = "root";
 				$password = "";
 				$database = "mulcahy_dental";
-				
-				$query = "SELECT * FROM patient";
                 
                 //Connect to the database
 				$connect = mysqli_connect($host, $user, $password, $database) or die("Problem connecting.");
                 
                 //Set connection to UTF-8
 				mysqli_query($connect, "SET NAMES utf8");
-                
+			
+				$query = "SELECT * FROM patient";
+
                 //Select data
 				$result = mysqli_query($connect, $query) or die("Bad Query.");
                 

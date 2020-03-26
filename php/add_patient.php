@@ -12,19 +12,19 @@
         <br/>
 
         <form action="" method="POST">
-            <label>Name</label>
+            <label>Name: </label>
             <input required type="text" name="name" />
             <br/><br/>
 
-            <label>Date of Birth</label>
+            <label>Date of Birth: </label>
             <input required type="date" name="dob" />
             <br/><br/>
 
-            <label>Phone Number</label>
+            <label>Phone Number: </label>
             <input required type="number" name="phone" />
             <br/><br/>
 
-            <label>Email</label>
+            <label>Email: </label>
             <input required type="email" name="email" />
 
             <br/><br/>
@@ -50,7 +50,6 @@
     
                 mysqli_query($connect, $query) or die (mysqli_error($connect)); 
 
-                echo "Form submitted.";
                 mysqli_close($connect);
 
                 header('Location: ./patients.php');
