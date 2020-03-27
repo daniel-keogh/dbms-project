@@ -113,7 +113,7 @@ INSERT INTO `bill` VALUES
 (6, '2020-03-23', '75.00', 6, 6, 'Appointment'),
 (7, '2020-03-23', '50.00', 7, 7, 'Appointment'),
 (8, '2020-03-23', '75.00', 8, 8, 'Late Cancellation Fee'),
-(9, '2020-03-23', '100.00', 9, 9, 'Appointment');
+(9, '2020-03-23', '50.00', 9, 9, 'Appointment');
 
 -- --------------------------------------------------------
 
@@ -127,24 +127,24 @@ CREATE TABLE IF NOT EXISTS `payment` (
   `bill_id` int(10) UNSIGNED NOT NULL,
   `amount_payed` decimal(10,2) NOT NULL,
   `payment_method` enum('cash','card','cheque') NOT NULL,
+  `payment_date` date NOT NULL,
   PRIMARY KEY (`payment_id`),
   CONSTRAINT FOREIGN KEY(`bill_id`) REFERENCES `bill`(`bill_id`)
 ) ENGINE=InnoDB;
 
 
 INSERT INTO `payment` VALUES
-(1, 1, '25.00', 'cheque'),
-(2, 2, '25.00', 'cheque'),
-(3, 3, '75.00', 'card'),
-(4, 4, '30.00', 'card'),
-(5, 5, '50.00', 'card'),
-(6, 6, '35.00', 'cheque'),
-(7, 7, '75.00', 'card'),
-(8, 8, '50.00', 'cash'),
-(9, 9, '25.00', 'cheque'),
-(10, 1, '25.00', 'cheque'),
-(11, 2, '25.00', 'cheque'),
-(12, 9, '25.00', 'cheque');
+(1, 1, '25.00', 'cheque', '2020-03-17'),
+(2, 2, '25.00', 'cheque', '2020-03-17'),
+(3, 3, '75.00', 'card', '2020-03-17'),
+(4, 4, '50.00', 'card', '2020-03-23'),
+(5, 5, '25.00', 'card', '2020-03-23'),
+(6, 6, '75.00', 'cheque', '2020-03-23'),
+(7, 7, '50.00', 'card', '2020-03-23'),
+(8, 8, '75.00', 'cash', '2020-03-23'),
+(9, 9, '50.00', 'cheque', '2020-03-23'),
+(10, 1, '25.00', 'cheque', '2020-03-24'),
+(11, 2, '25.00', 'cheque', '2020-03-24');
 
 -- --------------------------------------------------------
 
@@ -189,12 +189,12 @@ CREATE TABLE IF NOT EXISTS `treatment` (
 
 
 INSERT INTO `treatment` VALUES
-(1, 1, load_file('c:/appointments/app_1/xray.jpg'), '/images/app_1/xray.jpg', 1),
-(2, 2, load_file('c:/appointments/app_2/xray.jpg'), '/images/app_2/xray.jpg', NULL),
-(3, 3, load_file('c:/appointments/app_3/xray.jpg'), '/images/app_3/xray.jpg', 2),
-(4, 4, load_file('c:/appointments/app_4/xray.jpg'), '/images/app_4/xray.jpg', NULL),
-(5, 5, load_file('c:/appointments/app_5/xray.jpg'), '/images/app_5/xray.jpg', 1),
-(6, 6, load_file('c:/appointments/app_6/xray.jpg'), '/images/app_6/xray.jpg', NULL),
-(7, 7, load_file('c:/appointments/app_7/xray.jpg'), '/images/app_7/xray.jpg', 2),
-(8, 8, load_file('c:/appointments/app_8/xray.jpg'), '/images/app_8/xray.jpg', NULL),
-(9, 9, load_file('c:/appointments/app_9/xray.jpg'), '/images/app_9/xray.jpg', NULL);
+(1, 1, load_file('c:/xrays/app_1/xray.jpg'), '/xrays/app_1/xray.jpg', 1),
+(2, 2, load_file('c:/xrays/app_2/xray.jpg'), '/xrays/app_2/xray.jpg', NULL),
+(3, 3, load_file('c:/xrays/app_3/xray.jpg'), '/xrays/app_3/xray.jpg', 2),
+(4, 4, load_file('c:/xrays/app_4/xray.jpg'), '/xrays/app_4/xray.jpg', NULL),
+(5, 5, load_file('c:/xrays/app_5/xray.jpg'), '/xrays/app_5/xray.jpg', 1),
+(6, 6, load_file('c:/xrays/app_6/xray.jpg'), '/xrays/app_6/xray.jpg', NULL),
+(7, 7, load_file('c:/xrays/app_7/xray.jpg'), '/xrays/app_7/xray.jpg', 2),
+(8, 8, load_file('c:/xrays/app_8/xray.jpg'), '/xrays/app_8/xray.jpg', NULL),
+(9, 9, load_file('c:/xrays/app_9/xray.jpg'), '/xrays/app_9/xray.jpg', NULL);
