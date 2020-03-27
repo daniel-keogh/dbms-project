@@ -165,8 +165,8 @@ CREATE TABLE IF NOT EXISTS `specialist` (
 
 
 INSERT INTO `specialist` VALUES
-(1, "ABC Dental", "123 Fake St., Oranmore, Co. Galway", '0919157266', 'abc@dental.ie', 'Orthodontics'),
-(2, "123 Dental", "123 Fake St., Loughrea, Co. Galway", '0914238729', '123@dental.ie', 'Periodontics');
+(1, "ABC Dental", "123 Fake St., Oranmore, Co. Galway", '091915726', 'abc@dental.ie', 'Orthodontics'),
+(2, "123 Dental", "123 Fake St., Loughrea, Co. Galway", '091423829', '123@dental.ie', 'Periodontics');
 
 
 -- --------------------------------------------------------
