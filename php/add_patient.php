@@ -32,9 +32,16 @@
             <br/><br/>
         </form>
         <?php
+            // Local
             $host = "localhost";
             $user = "root";
             $password = "";
+
+            // Remote
+            // $host = "CLOUD_IP";
+            // $user = "DK";
+            // $password = "DK";
+
             $database = "mulcahy_dental";
 
             $connect = mysqli_connect($host, $user, $password, $database) or die("Problem connecting.");

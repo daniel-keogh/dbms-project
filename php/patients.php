@@ -20,9 +20,16 @@
 				<td><h3>email</h3></td>
 			</tr>
 			<?php			
+				// Local
 				$host = "localhost";
 				$user = "root";
 				$password = "";
+
+				// Remote
+				// $host = "CLOUD_IP";
+				// $user = "DK";
+				// $password = "DK";
+
 				$database = "mulcahy_dental";
                 
                 //Connect to the database

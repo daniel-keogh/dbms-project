@@ -21,9 +21,16 @@
                 <td><h3>xray_path</h3></td>
 			</tr>
 			<?php			
+				// Local
 				$host = "localhost";
 				$user = "root";
 				$password = "";
+
+				// Remote
+				// $host = "CLOUD_IP";
+				// $user = "DK";
+				// $password = "DK";
+
 				$database = "mulcahy_dental";
 				
                 $query = "SELECT p.name patient_name, a.date AS appointment_date, s.name specialist_name, s.specialty, t.xray, t.xray_path, t.treatment_id

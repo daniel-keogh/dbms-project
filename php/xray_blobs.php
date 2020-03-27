@@ -1,5 +1,9 @@
 <?php
+    // Local
     $var = mysqli_connect("localhost", "root", "");
+
+    // Remote
+    // $var = mysqli_connect("CLOUD_IP", "DK", "DK");
 
     mysqli_select_db($var, "mulcahy_dental") or die(mysqli_error());
 
